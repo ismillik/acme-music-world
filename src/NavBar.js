@@ -4,9 +4,9 @@ const NavBar = (props) => {
    const { artists, albums } = props;
     return (
         <div id='navbar'>
-            <h2>Home</h2>
-            <h2>Artists ({ artists.length })</h2>
-            <h2>Albums ({ albums.length })</h2>
+            <h2 onClick= {() => selectView('Home')}>Home</h2>
+            <h2 onClick= {() => selectView('Artists')}>Artists ({ artists.length })</h2>
+            <h2 onClick= {() => selectView('Albums')}>Albums ({ albums.length })</h2>
         </div>
     )
 }

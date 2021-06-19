@@ -11,24 +11,27 @@ class Main extends React.Component {
         this.state = {
             artists: [],
             albums: [],
-            selection: 'Home'
-        }
+            view: 'Home'
+        };
+        this.selectView = this.selectView.bind(this);
     }
 
     async componentDidMount() {
         try {
             const artistRes = await axios.get('/api/artists');
             const artists = artistRes.data;
-            this.setState( { artists });
+            this.setState({ artists });
             const albumRes = await axios.get('/api/albums');
             const albums = albumRes.data;
-            this.setState( { albums });
-            console.log(this.state.artists);
-            console.log(this.state.albums);
+            this.setState({ albums });
         }
         catch(err) {
             console.log('There was a problem making contact!');
         };
+    }
+
+    selectView(view) {
+        this.setState({ view: view });
     }
     
     render () {
@@ -38,10 +41,22 @@ class Main extends React.Component {
                     artists = {this.state.artists}
                     albums = {this.state.albums}
                 />
-                <div id='container'>
-                    <h1>Welcome to Acme Music World!!!</h1>
-                    <Artists artists = {this.state.artists}/>
-                    <Albums albums = {this.state.albums}/>
+                <div id= 'container'>
+                    {
+                    this.state.view === 'Home' ? (
+                        <h1>Welcome to Acme Music World!!!</h1>
+                     ) : (<div></div>)
+                    }
+                    {
+                    this.state.view === 'Artists' ? (
+                        <Artists artists = {this.state.artists}/>
+                    ) : (<div></div>)
+                    }
+                    {
+                    this.state.view === 'Albums' ? (
+                        <Albums albums = {this.state.albums}/>
+                    ) : (<div></div>)
+                    }
                 </div>
             </div>
         )
