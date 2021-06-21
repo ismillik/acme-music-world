@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NavBar = (props) => {
-   const { artists, albums } = props;
+   const { artists, albums, selectView } = props;
     return (
         <div id='navbar'>
             <h2 onClick= {() => selectView('Home')}>Home</h2>

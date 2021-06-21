@@ -40,6 +40,7 @@ class Main extends React.Component {
                 <NavBar 
                     artists = {this.state.artists}
                     albums = {this.state.albums}
+                    selectView = {this.selectView}
                 />
                 <div id= 'container'>
                     {
